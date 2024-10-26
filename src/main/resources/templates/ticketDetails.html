@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Detalji Ulaznice</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+  <h5 class="card-title"><span th:text="${name}"></span> je trenutno prijavljen!</h5>
+  <h1>Detalji Ulaznice</h1>
+
+  <div th:if="${ticket != null}" class="card">
+    <div class="card-body">
+      <h5 class="card-title">Informacije o Ulaznici</h5>
+      <p class="card-text"><strong>OIB:</strong> <span th:text="${ticket.vatin}"></span></p>
+      <p class="card-text"><strong>Ime:</strong> <span th:text="${ticket.firstName}"></span></p>
+      <p class="card-text"><strong>Prezime:</strong> <span th:text="${ticket.lastName}"></span></p>
+      <p class="card-text"><strong>Vrijeme Kreiranja:</strong> <span th:text="${#dates.format(ticket.creationTime, 'dd.MM.yyyy HH:mm')}"></span></p>
+    </div>
+  </div>
+
+  <div th:if="${ticket == null}" class="alert alert-danger" role="alert">
+    Ulaznica s danim ID-om nije pronađena.
+  </div>
+
+  <a class="btn btn-primary" href="/">Natrag na Ulaznice</a>
+</div>
+</body>
+</html>
