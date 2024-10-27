@@ -34,7 +34,7 @@ public class TicketService {
 
         if(ticketRequest.getFirstName() == null || ticketRequest.getLastName() == null || ticketRequest.getVatin() == null){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Ulazni JSON ne sadrži sve tražene podatke!");
-        } else if(ticketRepository.countAllByVatin(vatin) > 3){
+        } else if(ticketRepository.countAllByVatin(vatin) > 2){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Maksimalan broj ulaznica po OIB-u je 3!");
         }
         else{
